@@ -15,16 +15,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PANDOC_VERSION=2.3.1-1
-
 BUILD_DIR=$1
 CACHE_DIR=$2
 DEPS_DIR=$3
 INDEX=$4
 
-PANDA_URL=https://github.com/jgm/pandoc/releases/download/2.3.1/pandoc-${PANDOC_VERSION}-amd64.deb
-echo "Downloading Pandoc ${PANDOC_VERSION}: ${PANDA_URL}"
-wget "${PANDA_URL}" -O "${DEPS_DIR}/pandoc.deb" -q
+PANDOC_URL=https://github.com/jgm/pandoc/releases/download/2.3.1/pandoc-2.3.1-1-amd64.deb
+echo "Downloading Pandoc ${PANDOC_VERSION}: ${PANDOC_URL}"
+wget "${PANDOC_URL}" -O "${DEPS_DIR}/pandoc.deb" -q
 
 echo "Extracting Pandoc binary..."
 cd ${DEPS_DIR} && ar x "${DEPS_DIR}/pandoc.deb" && \
