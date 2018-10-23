@@ -25,7 +25,14 @@ echo "Converting Markdown files to HTML pages..."
 FILES=`find "${BUILD_DIR}" -type f -name "*.md"`
 for F in $FILES; do
   echo " o Parsing `basename ${F}`..."
-  ${DEPS_DIR}/pandoc -s -f gfm -t html ${F} --quiet --css="${DEPS_DIR}/pandoc.css" --self-contained > "${F%.*}.html"
+  ${DEPS_DIR}/pandoc \
+    --to=html5 \
+    "--output=${F%.*}.html" \
+    --quiet \
+    "--css=${DEPS_DIR}/styles.css" \
+    --highlight-style=haddock \
+    --self-contained \
+    "${F}"
 done
 
 echo "Conversion done"

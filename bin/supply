@@ -31,4 +31,5 @@ cd ${DEPS_DIR} && ar x "${DEPS_DIR}/pandoc.deb" && \
   rm -rf control.tar.gz data.tar.xz debian-binary usr pandoc.deb
 
 echo "Downloading CSS stylesheet..."
-wget "https://gist.githubusercontent.com/killercup/5917178/raw/40840de5352083adb2693dc742e9f75dbb18650f/pandoc.css" -O "${DEPS_DIR}/pandoc.css" -q
+CSS_FILE=https://raw.githubusercontent.com/otsaloma/markdown-css/master/github.css
+wget "${CSS_FILE}" -O "${DEPS_DIR}/styles.css" -q
