@@ -20,18 +20,27 @@ CACHE_DIR=$2
 DEPS_DIR=$3
 INDEX=$4
 
+TOC_ARG=""
+if [ ! -z "${MARKDOWN_TOC}" ]; then
+  if [ "${MARKDOWN_TOC}" -eq "1" ]; then
+    TOC_ARG="--toc"
+  fi
+fi
+
 echo "Converting Markdown files to HTML pages..."
 
 FILES=`find "${BUILD_DIR}" -type f -name "*.md"`
 for F in $FILES; do
   echo " o Parsing `basename ${F}`..."
   ${DEPS_DIR}/pandoc \
+    --from=gfm \
     --to=html5 \
     "--output=${F%.*}.html" \
     --quiet \
     "--css=${DEPS_DIR}/styles.css" \
     --highlight-style=haddock \
     --self-contained \
+    ${TOC_ARG} \
     "${F}"
 done
 

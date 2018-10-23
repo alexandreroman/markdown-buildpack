@@ -30,6 +30,19 @@ applications:
       - https://github.com/alexandreroman/markdown-buildpack.git
 ```
 
+Add environment variable `MARKDOWN_TOC` with value set to `1` to generate
+a table of contents.
+
+```yaml
+---
+applications:
+  - name: appname
+    env:
+      MARKDOWN_TOC: 1
+    buildpacks:
+      - https://github.com/alexandreroman/markdown-buildpack.git
+```
+
 This project is using [Pandoc](http://pandoc.org) to convert Markdown to HTML.
 
 Feel free to contribute!
