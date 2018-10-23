@@ -42,6 +42,7 @@ for F in $FILES; do
     --self-contained \
     ${TOC_ARG} \
     "${F}"
+    rm "${F}"
 done
 
 echo "Conversion done"
