@@ -20,12 +20,14 @@ CACHE_DIR=$2
 DEPS_DIR=$3
 INDEX=$4
 
+mkdir -p "${DEPS_DIR}/${INDEX}"
+
 PANDOC_URL=https://github.com/jgm/pandoc/releases/download/2.3.1/pandoc-2.3.1-1-amd64.deb
 echo "Downloading Pandoc ${PANDOC_VERSION}: ${PANDOC_URL}"
-wget "${PANDOC_URL}" -O "${DEPS_DIR}/pandoc.deb" -q
+wget "${PANDOC_URL}" -O "${DEPS_DIR}/${INDEX}/pandoc.deb" -q
 
 echo "Extracting Pandoc binary..."
-cd ${DEPS_DIR} && ar x "${DEPS_DIR}/pandoc.deb" && \
+cd "${DEPS_DIR}/${INDEX}" && ar x "${DEPS_DIR}/${INDEX}/pandoc.deb" && \
   tar xf data.tar.xz && mv usr/bin/pandoc . && \
   rm -rf control.tar.gz data.tar.xz debian-binary usr pandoc.deb
 
@@ -34,4 +36,4 @@ if [ ! -z "${MARKDOWN_STYLESHEET}" ]; then
   CSS_FILE=${MARKDOWN_STYLESHEET}
 fi
 echo "Downloading CSS stylesheet: ${CSS_FILE}"
-wget "${CSS_FILE}" -O "${DEPS_DIR}/styles.css" -q
+wget "${CSS_FILE}" -O "${DEPS_DIR}/${INDEX}/styles.css" -q

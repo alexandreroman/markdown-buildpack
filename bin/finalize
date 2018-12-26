@@ -32,12 +32,12 @@ echo "Converting Markdown files to HTML pages..."
 FILES=`find "${BUILD_DIR}" -type f -name "*.md"`
 for F in $FILES; do
   echo " o Parsing `basename ${F}`..."
-  ${DEPS_DIR}/pandoc \
+  "${DEPS_DIR}/${INDEX}/pandoc" \
     --from=gfm \
     --to=html5 \
     "--output=${F%.*}.html" \
     --quiet \
-    "--css=${DEPS_DIR}/styles.css" \
+    "--css=${DEPS_DIR}/${INDEX}/styles.css" \
     --highlight-style=haddock \
     --self-contained \
     ${TOC_ARG} \
