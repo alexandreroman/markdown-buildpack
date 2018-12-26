@@ -22,7 +22,7 @@ INDEX=$4
 
 mkdir -p "${DEPS_DIR}/${INDEX}"
 
-PANDOC_URL=https://github.com/jgm/pandoc/releases/download/2.3.1/pandoc-2.3.1-1-amd64.deb
+PANDOC_URL=https://github.com/jgm/pandoc/releases/download/2.5/pandoc-2.5-1-amd64.deb
 echo "Downloading Pandoc ${PANDOC_VERSION}: ${PANDOC_URL}"
 wget "${PANDOC_URL}" -O "${DEPS_DIR}/${INDEX}/pandoc.deb" -q
 
